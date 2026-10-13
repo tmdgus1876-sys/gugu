@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가을 숲 구구단 놀이</title>
+  <!-- 깔끔한 고딕체 (Noto Sans KR) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <header>
+      <h1>🍁 가을 숲 구구단 놀이 🍂</h1>
+      <p class="subtitle">도토리를 모으듯 즐겁게 풀어보아요!</p>
+    </header>
+
+    <!-- 1단계: 문제 개수 선택 화면 -->
+    <section id="setup-screen" class="screen">
+      <div class="info-card">
+        <p class="info-text">도전할 문제 수를 골라주세요 🌰</p>
+      </div>
+      <div class="count-selector">
+        <button type="button" class="btn count-btn" onclick="selectTotal(5)">5문제</button>
+        <button type="button" class="btn count-btn active" onclick="selectTotal(10)">10문제</button>
+        <button type="button" class="btn count-btn" onclick="selectTotal(15)">15문제</button>
+        <button type="button" class="btn count-btn" onclick="selectTotal(20)">20문제</button>
+      </div>
+      <button type="button" class="btn start-btn" onclick="startGame()">도전 시작하기 🍂</button>
+    </section>
+
+    <!-- 2단계: 퀴즈 풀기 화면 -->
+    <section id="quiz-screen" class="screen hidden">
+      <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      
+      <div class="status-bar">
+        <span>진행: <span id="current-index-txt">1</span> / <span id="total-limit-txt">10</span></span>
+        <span>맞힌 개수: <span id="correct-count-txt">0</span> 🌰</span>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-text" id="quiz-question">? × ? =</div>
+      </div>
+
+      <div class="answer-display" id="user-display"></div>
+      <div class="message-area" id="feedback-msg"></div>
+
+      <div class="keypad">
+        <button type="button" class="btn" onclick="pressNum(1)">1</button>
+        <button type="button" class="btn" onclick="pressNum(2)">2</button>
+        <button type="button" class="btn" onclick="pressNum(3)">3</button>
+        <button type="button" class="btn" onclick="pressNum(4)">4</button>
+        <button type="button" class="btn" onclick="pressNum(5)">5</button>
+        <button type="button" class="btn" onclick="pressNum(6)">6</button>
+        <button type="button" class="btn" onclick="pressNum(7)">7</button>
+        <button type="button" class="btn" onclick="pressNum(8)">8</button>
+        <button type="button" class="btn" onclick="pressNum(9)">9</button>
+        <button type="button" class="btn action-btn" onclick="clearInput()">지우기 🍂</button>
+        <button type="button" class="btn" onclick="pressNum(0)">0</button>
+        <button type="button" class="btn submit-btn" onclick="checkAnswer()">확인 ✨</button>
+      </div>
+    </section>
+
+    <!-- 3단계: 결과 확인 화면 -->
+    <section id="result-screen" class="screen hidden">
+      <div class="result-card">
+        <div class="result-icon">🧺</div>
+        <h2>도전 완료!</h2>
+        <p class="result-summary">
+          총 <span id="result-total">10</span>문제 중 <br>
+          <strong id="result-correct">0</strong>문제를 맞혔어요!
+        </p>
+        <p id="result-comment" class="result-comment"></p>
+      </div>
+      <button type="button" class="btn start-btn" onclick="resetApp()">다시 도전하기 🍁</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
